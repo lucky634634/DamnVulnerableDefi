@@ -183,23 +183,22 @@ contract TheRewarderChallenge is Test {
         tokensToClaim[0] = IERC20(address(dvt));
         tokensToClaim[1] = IERC20(address(weth));
 
-        // Create Alice's claims
         Claim[] memory claims = new Claim[](totalTxCount);
 
         for (uint i = 0; i < totalTxCount; i++) {
             if (i < dvtTxCount) {
                 claims[i] = Claim({
-                    batchNumber: 0, // claim corresponds to first DVT batch
+                    batchNumber: 0, 
                     amount: PLAYER_DVT_CLAIM_AMOUNT,
-                    tokenIndex: 0, // claim corresponds to first token in `tokensToClaim` array
-                    proof: merkle.getProof(dvtLeaves, 188) // Alice's address is at index 2
+                    tokenIndex: 0, 
+                    proof: merkle.getProof(dvtLeaves, 188) 
                 });
             } else {
                 claims[i] = Claim({
-                    batchNumber: 0, // claim corresponds to first DVT batch
+                    batchNumber: 0, 
                     amount: PLAYER_WETH_CLAIM_AMOUNT,
-                    tokenIndex: 1, // claim corresponds to first token in `tokensToClaim` array
-                    proof: merkle.getProof(wethLeaves, 188) // Alice's address is at index 2
+                    tokenIndex: 1, 
+                    proof: merkle.getProof(wethLeaves, 188) 
                 });
             }
         }
